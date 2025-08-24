@@ -1,15 +1,19 @@
 @extends('layouts.main_layout')
 @section('content')
     <div class="container d-flex justify-content-center align-items-center vh-100">
-        <form>
+        <form method="POST" action="{{ url('/login') }}">
+            @csrf
             <div class="mb-3">
                 <label class="form-label">Login:</label>
-                <input type="email" class="form-control">                
+                <input type="email" name="email" class="form-control">                
             </div>
             <div class="mb-3">
                 <label for="exampleInputPassword1" class="form-label">Senha:</label>
-                <input type="password" class="form-control" id="exampleInputPassword1">
-            </div>            
+                <input type="password" name="password" class="form-control">
+            </div>
+             @error('email')
+                <div class="text-danger">{{ $message }}</div>
+            @enderror        
             <div class="d-flex">
                 <div class="d-flex justify-content-start align-items-start w-50">
                     <a href="#">Criar conta</a>
