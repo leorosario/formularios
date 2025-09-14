@@ -2,12 +2,16 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\MainController;
+use App\Http\Controllers\FormularioController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/login', [AuthController::class, 'login'])->name('login');
 Route::post('/login', [AuthController::class, 'realizarLogin']);
-Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::get('/criar-conta', [AuthController::class, 'criarConta'])->name('criarConta');
 Route::post('/criar-conta', [AuthController::class, 'criarContaCadastrar'])->name('criarContaCadastrar');
 
-Route::get('/', [MainController::class, 'Home'])->name('formularios')->middleware('auth');;
+
+// Rotas Usuário logado
+Route::get('/', [MainController::class, 'Home'])->name('formularios')->middleware('auth');
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout')->middleware('auth');
+Route::post('/cadastrar-formulario', [FormularioController::class, 'cadastrarFormulario'])->name('cadastrarFormulario')->middleware('auth');

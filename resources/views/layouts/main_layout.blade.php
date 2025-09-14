@@ -2,6 +2,7 @@
 <html>
 <head>
     @vite('resources/js/app.js')
+    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/bootstrap/bootstrap.min.css') }}">
 </head>
 <body>
