@@ -14,7 +14,7 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-                <a class="nav-link active" aria-current="page" href="#">Home</a>          
+                <a class="nav-link active" aria-current="page" href="{{ route('formularios') }}">Home</a>          
             </div>              
             <form class="d-flex ms-auto me-3" action="{{ route('logout') }}" method="POST">
                 @csrf

@@ -15,3 +15,6 @@ Route::post('/criar-conta', [AuthController::class, 'criarContaCadastrar'])->nam
 Route::get('/', [MainController::class, 'Home'])->name('formularios')->middleware('auth');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout')->middleware('auth');
 Route::post('/cadastrar-formulario', [FormularioController::class, 'cadastrarFormulario'])->name('cadastrarFormulario')->middleware('auth');
+Route::get('/editar-formulario/{id}', [FormularioController::class, 'editarFormulario'])->name('editarFormulario')->middleware('auth');
+Route::post('/editar-formulario', [FormularioController::class, 'editarFormularioBanco'])->name('editarFormularioBanco')->middleware('auth');
+Route::post('/deletar-formulario', [FormularioController::class, 'deletarFormulario'])->name('deletarFormulario')->middleware('auth');

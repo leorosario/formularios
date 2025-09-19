@@ -46,8 +46,14 @@
                 <div class=" w-50 mt-3 d-flex align-items-center justify-content-center gap-2">
                     <a href="#" class="btn btn-outline-primary d-flex align-items-center justify-content-center">{{ $formulario->nome }}</a>
                     <a href="#" class="btn btn-outline-success d-flex align-items-center justify-content-center"><span class="material-symbols-outlined">download</span></a>
-                    <a href="#" class="btn btn-outline-warning d-flex align-items-center justify-content-center"><span class="material-symbols-outlined">edit</span></a>
-                    <a href="#" class="btn btn-outline-danger d-flex align-items-center justify-content-center"><span class="material-symbols-outlined">delete</span></a>
+                    <a href="{{ route('editarFormulario', $formulario->id) }}" class="btn btn-outline-warning d-flex align-items-center justify-content-center"><span class="material-symbols-outlined">edit</span></a>
+                    <form method="POST" action="{{ url('/deletar-formulario') }}">
+                        @csrf
+                        <input type="hidden" name="id" value="{{ $formulario->id }}">
+                        <button type="submit"  class="btn btn-outline-danger d-flex align-items-center justify-content-center"
+                            onclick="return confirm('Tem certeza que deseja excluir este formulário?')"
+                        ><span class="material-symbols-outlined">delete</span></button>
+                    </form>
                 </div>
             </div>
         @endforeach        
