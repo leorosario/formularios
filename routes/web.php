@@ -18,3 +18,4 @@ Route::post('/cadastrar-formulario', [FormularioController::class, 'cadastrarFor
 Route::get('/editar-formulario/{id}', [FormularioController::class, 'editarFormulario'])->name('editarFormulario')->middleware('auth');
 Route::post('/editar-formulario', [FormularioController::class, 'editarFormularioBanco'])->name('editarFormularioBanco')->middleware('auth');
 Route::post('/deletar-formulario', [FormularioController::class, 'deletarFormulario'])->name('deletarFormulario')->middleware('auth');
+Route::get('/montar-formulario/{id}', [FormularioController::class, 'montarFormulario'])->name('montarFormulario')->middleware('auth');

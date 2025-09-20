@@ -44,7 +44,7 @@
         @foreach ($formularios as $formulario)
             <div class="row d-flex align-items-center justify-content-center">
                 <div class=" w-50 mt-3 d-flex align-items-center justify-content-center gap-2">
-                    <a href="#" class="btn btn-outline-primary d-flex align-items-center justify-content-center">{{ $formulario->nome }}</a>
+                    <a href="{{ route('montarFormulario', $formulario->id) }}" class="btn btn-outline-primary d-flex align-items-center justify-content-center">{{ $formulario->nome }}</a>
                     <a href="#" class="btn btn-outline-success d-flex align-items-center justify-content-center"><span class="material-symbols-outlined">download</span></a>
                     <a href="{{ route('editarFormulario', $formulario->id) }}" class="btn btn-outline-warning d-flex align-items-center justify-content-center"><span class="material-symbols-outlined">edit</span></a>
                     <form method="POST" action="{{ url('/deletar-formulario') }}">

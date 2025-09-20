@@ -57,4 +57,19 @@ class FormularioController extends Controller
         $formulario->delete();
         return redirect('/');
     }
+
+    public function montarFormulario($id){        
+        return view('montarFormulario');
+    }
+
+    public function buscarFormulario($id)
+    {
+        $formulario = Formulario::find($id);
+
+        if (!$formulario) {
+            return response()->json(['message' => 'Formulario não encontrado'], 404);
+        }
+
+        return response()->json($formulario);
+    }
 }
