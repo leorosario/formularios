@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Formulario;
+use App\Models\Pagina;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 
@@ -72,4 +73,23 @@ class FormularioController extends Controller
 
         return response()->json($formulario);
     }
+
+    public function cadastrarPagina(Request $request)
+    {
+        $validated = $request->validate([
+            'nome' => ['required', 'string', 'min:3', 'max:255'],
+            'id_formulario' => 'required|integer',
+        ]);
+
+        $pagina = new Pagina();
+        $pagina->nome = $request->nome;
+        $pagina->id_formulario = $request->id_formulario;
+        $pagina->repete = 0;
+        $pagina->created_at = Carbon::now();
+        $pagina->updated_at = Carbon::now();
+        $pagina->save();
+
+        return response()->json($pagina, 201);
+    }
+
 }

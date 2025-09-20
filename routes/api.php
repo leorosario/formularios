@@ -9,3 +9,4 @@ use Illuminate\Support\Facades\Route;
 // })->middleware('auth:sanctum');
 
 Route::get('/buscar-formulario/{id}', [FormularioController::class, 'buscarFormulario']);
+Route::post('/cadastrar-pagina', [FormularioController::class, 'cadastrarPagina']);
