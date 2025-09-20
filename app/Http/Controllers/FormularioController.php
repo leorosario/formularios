@@ -74,14 +74,30 @@ class FormularioController extends Controller
         return response()->json($formulario);
     }
 
+     public function buscarPaginas($id_formulario)
+    {
+        $paginas = Pagina::where('id_formulario', $id_formulario)->get();
+
+        if (!$paginas) {
+            $paginas = null;
+        }
+
+        return response()->json($paginas);
+    }
+
     public function cadastrarPagina(Request $request)
     {
-        $validated = $request->validate([
+        $request->validate([
             'nome' => ['required', 'string', 'min:3', 'max:255'],
             'id_formulario' => 'required|integer',
+        ], [
+            // Mensagens personalizadas
+            'nome.required' => 'O campo nome é obrigatório.',
+            'nome.min' => 'O nome deve ter no mínimo :min caracteres.',
+            'nome.max' => 'O nome deve ter no máximo :max caracteres.',            
         ]);
 
-        $pagina = new Pagina();
+        $pagina = new Formulario();
         $pagina->nome = $request->nome;
         $pagina->id_formulario = $request->id_formulario;
         $pagina->repete = 0;
